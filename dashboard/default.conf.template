@@ -1,0 +1,35 @@
+server {
+    listen __PORT__;
+    listen [::]:__PORT__;
+    server_name _;
+
+    resolver __RESOLVER__ valid=10s ipv6=on;
+    root /usr/share/nginx/html;
+    client_max_body_size 10m;
+
+    # Open health path for Railway's health check.
+    location = /healthz {
+        auth_basic off;
+        default_type text/plain;
+        return 200 "ok\n";
+    }
+
+    auth_basic "AnakinScraper";
+    auth_basic_user_file /tmp/anakin-railway/htpasswd;
+
+    location /api/ {
+        set $anakin_api __API_URL__;
+        rewrite ^/api/(.*)$ /$1 break;
+        proxy_pass $anakin_api;
+        proxy_http_version 1.1;
+        proxy_set_header Authorization "";
+        proxy_set_header X-API-Key "__API_KEY__";
+        proxy_connect_timeout 10s;
+        proxy_read_timeout 180s;
+        proxy_send_timeout 180s;
+    }
+
+    location / {
+        try_files $uri /index.html;
+    }
+}
