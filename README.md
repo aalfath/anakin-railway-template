@@ -1,3 +1,5 @@
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/anakinscraper?utm_medium=integration&utm_source=button&utm_campaign=anakinscraper)
+
 # AnakinScraper on Railway
 
 A Railway template for [AnakinScraper](https://github.com/Anakin-Inc/anakin), the open-source web scraping API from Anakin (AGPL-3.0). It turns any web page into clean markdown, HTML or structured JSON, with an HTTP fetcher, a Camoufox anti-detect browser fallback, per-domain rules and proxy auto-selection.
@@ -24,7 +26,7 @@ A Railway template for [AnakinScraper](https://github.com/Anakin-Inc/anakin), th
 | Dashboard | `DASHBOARD_USERNAME` | `admin` | Basic-auth user. |
 | Dashboard | `DASHBOARD_PASSWORD` | generated | Basic-auth password. Read it in the Dashboard service's Variables tab. |
 | Dashboard | `ANAKIN_API_URL`, `ANAKIN_API_KEY` | references | Where the dashboard forwards API calls, and the key it adds. |
-| Browser | `PORT`, `WS_PATH` | `9222`, `camoufox` | The WebSocket the API connects to. |
+| Browser | `PORT` | `9222` | The WebSocket port the API connects to (path `/camoufox`, set in the image). |
 
 Optional, set on the AnakinScraper service when you need them: `GEMINI_API_KEY` (structured JSON extraction with `generateJson`), `PROXY_URL` or `PROXY_URLS` (proxy pool), `ANAKIN_API_KEY` (hosted anakin.io fallback), `WORKER_POOL_SIZE` (default 5), `TELEMETRY=off` (upstream sends anonymous usage counts by default, see its [TELEMETRY.md](https://github.com/Anakin-Inc/anakin/blob/master/TELEMETRY.md)).
 

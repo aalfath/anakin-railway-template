@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-23: Deploy on Railway button
+
+- README only: Deploy on Railway button for the published template `anakinscraper`, and the Browser variable row corrected (`WS_PATH` is an image default, not a template variable). No change to any service.
+
 ## 2026-11-23: first version
 
 - AnakinScraper `master` at `a842fc2f1fe5c22b80cd81e3f0760335ee21ed29` (2026-08-18): API-key auth, SSRF guard, Fiber patched to listen dual-stack for Railway's private network.
